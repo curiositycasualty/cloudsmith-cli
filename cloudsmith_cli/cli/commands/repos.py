@@ -96,8 +96,8 @@ def get(ctx, opts, owner_repo, page, page_size):
     If OWNER isn't specified it'll default to the currently authenticated user
     (if any). If you're unauthenticated, no results will be returned.
     """
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo("Getting list of repositories ... ", nl=False, err=use_stderr)
 
@@ -164,7 +164,7 @@ def create(ctx, opts, owner, repo_config_file):
       $ cloudsmith repos create your-org repo-config-file.json
     """
     # Use stderr for messages if the output is something else (e.g. JSON)
-    use_stderr = opts.output != "pretty"
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
     repo_config = json.load(repo_config_file)
 
     repo_name = repo_config.get("name", None)
@@ -228,7 +228,7 @@ def update(ctx, opts, owner_repo, repo_config_file):
 
     """
     # Use stderr for message if the output is something else (e.g. JSON)
-    use_stderr = opts.output != "pretty"
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     owner, repo = owner_repo
     repo_config = json.load(repo_config_file)

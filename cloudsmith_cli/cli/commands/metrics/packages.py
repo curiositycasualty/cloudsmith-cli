@@ -105,8 +105,8 @@ def usage(ctx, opts, owner_repo, packages, start, finish):
     OWNER/REPO: Specify the OWNER namespace (i.e user or org) and repository to retrieve the
     metrics for that namespace/repository combination.
     """
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo("Getting usage metrics ... ", nl=False, err=use_stderr)
 

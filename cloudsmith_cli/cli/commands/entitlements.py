@@ -87,8 +87,8 @@ def list_entitlements(ctx, opts, owner_repo, page, page_size, show_tokens):
     """
     owner, repo = owner_repo
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo(
         "Getting list of entitlements for the %(repository)s "
@@ -319,8 +319,8 @@ def create(ctx, opts, owner_repo, show_tokens, name, token):
     """
     owner, repo = owner_repo
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.secho(
         "Creating %(name)s entitlement for the %(repository)s "
@@ -450,8 +450,8 @@ def update(ctx, opts, owner_repo_identifier, show_tokens, name, token):
     """
     owner, repo, identifier = owner_repo_identifier
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.secho(
         "Updating %(identifier)s entitlement for the %(repository)s "
@@ -523,8 +523,8 @@ def refresh(ctx, opts, owner_repo_identifier, show_tokens, yes):
         "repository": click.style(repo, bold=True),
     }
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     prompt = (
         "refresh the %(identifier)s entitlement for the %(repository)s "
@@ -599,8 +599,8 @@ def sync(ctx, opts, owner_repo, show_tokens, source, yes):
         "warning": click.style("*** WARNING ***", fg="yellow"),
     }
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     if not yes:
         click.secho(
@@ -764,8 +764,8 @@ def restrict(
     """
     owner, repo, identifier = owner_repo_identifier
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.secho(
         "Updating %(identifier)s entitlement for the %(repository)s "

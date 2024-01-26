@@ -49,8 +49,8 @@ def list_dependencies(ctx, opts, owner_repo_package):
     """
     owner, repo, identifier = owner_repo_package
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo(
         "Getting direct (non-transitive) dependencies of %(package)s in "

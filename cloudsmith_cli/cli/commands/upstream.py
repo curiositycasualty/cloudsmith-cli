@@ -160,8 +160,8 @@ def build_upstream_list_command(upstream_fmt):
     def func(ctx, opts, owner_repo, page, page_size):
         owner, repo = owner_repo
 
-        # Use stderr for messages if the output is something else (e.g.  # JSON)
-        use_stderr = opts.output != "pretty"
+        # Use stderr for messages if the output is something else (e.g. JSON)
+        use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
         click.echo("Getting upstreams... ", nl=False, err=use_stderr)
 
@@ -211,7 +211,7 @@ def build_upstream_create_command(upstream_fmt):
     @click.pass_context
     def func(ctx, opts, owner_repo, upstream_config_file):
         # Use stderr for messages if the output is something else (e.g. JSON)
-        use_stderr = opts.output != "pretty"
+        use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
         owner, repo = owner_repo
 
@@ -298,7 +298,7 @@ def build_upstream_update_command(upstream_fmt):
     @click.pass_context
     def func(ctx, opts, owner_repo_slug_perm, upstream_config_file):
         # Use stderr for message if the output is something else (e.g. JSON)
-        use_stderr = opts.output != "pretty"
+        use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
         owner, repo, slug_perm = owner_repo_slug_perm
 
@@ -383,7 +383,7 @@ def build_upstream_delete_command(upstream_fmt):
     @click.pass_context
     def func(ctx, opts, owner_repo_slug_perm, yes):
         # Use stderr for message if the output is something else (e.g. JSON)
-        use_stderr = opts.output != "pretty"
+        use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
         owner, repo, slug_perm = owner_repo_slug_perm
 

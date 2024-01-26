@@ -103,8 +103,8 @@ def ls(ctx, opts, owner, page, page_size):
     """
     owner = owner[0]
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo("Getting license policies ... ", nl=False, err=use_stderr)
 
@@ -159,7 +159,7 @@ def create(ctx, opts, owner, policy_config_file):
       $ cloudsmith policy license create your-org policy-config-file.json
     """
     # Use stderr for messages if the output is something else (e.g. JSON)
-    use_stderr = opts.output != "pretty"
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
     policy_config = json.load(policy_config_file)
 
     policy_name = policy_config.get("name", None)
@@ -240,7 +240,7 @@ def update(ctx, opts, owner, identifier, policy_config_file):
       $ cloudsmith policy license update your-org your-license-policy policy-config-file.json
     """
     # Use stderr for message if the output is something else (e.g. JSON)
-    use_stderr = opts.output != "pretty"
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     policy_config = json.load(policy_config_file)
 

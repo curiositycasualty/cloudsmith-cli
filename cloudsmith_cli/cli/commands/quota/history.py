@@ -103,8 +103,8 @@ def usage(ctx, opts, owner, oss):
       $ cloudsmith quota history your-org
     """
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
     click.echo("Getting quota ... ", nl=False, err=use_stderr)
 
     owner = owner[0]

@@ -69,8 +69,8 @@ def add_quarantine(ctx, opts, owner_repo_package, page, page_size):
     """
     owner, repo, slug = owner_repo_package
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo(
         "Adding %(repository)s/%(package_slug)s to quarantine... "
@@ -116,8 +116,8 @@ def remove_quarantine(ctx, opts, owner_repo_package, page, page_size):
     """
     owner, repo, slug = owner_repo_package
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo(
         "Removing %(repository)s/%(package_slug)s from quarantine... "

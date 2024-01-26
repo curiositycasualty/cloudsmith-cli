@@ -15,8 +15,8 @@ def handle_api_exceptions(
 ):
     """Context manager that handles API exceptions."""
     # flake8: ignore=C901
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     try:
         yield

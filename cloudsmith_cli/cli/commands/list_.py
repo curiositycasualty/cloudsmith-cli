@@ -51,8 +51,8 @@ def dependencies_(*args, **kwargs):  # pylint: disable=missing-docstring
 @click.pass_context
 def distros(ctx, opts, package_format):
     """List available distributions."""
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo("Getting list of distributions ... ", nl=False, err=use_stderr)
 
@@ -168,8 +168,8 @@ def packages(ctx, opts, owner_repo, page, page_size, query):
     """
     owner, repo = owner_repo
 
-    # Use stderr for messages if the output is something else (e.g.  # JSON)
-    use_stderr = opts.output != "pretty"
+    # Use stderr for messages if the output is something else (e.g. JSON)
+    use_stderr = opts.output in ('json', 'pretty', 'pretty_json')
 
     click.echo("Getting list of packages ... ", nl=False, err=use_stderr)
 
